@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+.clearself:before, .clearself:after { content:" "; display:block; height:0; overflow:hidden; }
+.clearself:after { clear:both; }
+.clearself { zoom:1; } /* IE < 8 */
+
+.clear { clear:both; }
+
+.hidden { display:none !important; visibility:hidden; }
+
+.left { float:left; }
+.right { float:right; }
+.center { display:block; margin-left:auto; margin-right:auto; }
