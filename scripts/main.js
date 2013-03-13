@@ -23,9 +23,7 @@
 				} else {
 					self.toggleMessage();
 					self.$message.html('Delete');
-					self.$element.removeClass('check');
-					self.$element.removeClass('double-check');
-					self.$element.addClass('default');
+					self.$element.removeClass('check double-check').addClass('default');
 				}
 			});
 
@@ -43,16 +41,12 @@
 
 			if (this.$element.hasClass('default')) {
 				self.$message.html('Are you sure?');
-				self.$element.removeClass('default');
-				self.$element.addClass('check');
+				self.$element.removeClass('default').addClass('check');
 			}
 			else if (this.$element.hasClass('check')) {
 				self.$message.html('Deleted');
-				self.$element.removeClass('check');
-				self.$element.addClass('double-check');
-				self.$element.addClass('finished');
-				self.$icon.removeClass('foundicon-trash');
-				self.$icon.addClass('foundicon-checkmark');
+				self.$element.removeClass('check').addClass('double-check finished');
+				self.$icon.removeClass('foundicon-trash').addClass('foundicon-checkmark');
 			}
 		}
 	}
