@@ -9,45 +9,45 @@
 		this.init();
 	}
 
-	DoubleDelete.prototype = {
-		init : function() {
-			var self = this;
+	var proto = DoubleDelete.prototype;
 
-			this.$icon.on('mouseenter', function() {
+	proto.init = function () {
+		var self = this;
+
+		this.$icon.on('mouseenter', function() {
+			self.toggleMessage();
+		});
+
+		this.$icon.on('mouseleave', function() {
+			if (self.$element.hasClass('finished')){
 				self.toggleMessage();
-			});
-
-			this.$icon.on('mouseleave', function() {
-				if (self.$element.hasClass('finished')){
-					self.toggleMessage();
-				} else {
-					self.toggleMessage();
-					self.$message.html('Delete');
-					self.$element.removeClass('check double-check').addClass('default');
-				}
-			});
-
-			this.$icon.on('click', function() {
-				self.doubleCheck();
-			});
-		},
-
-		toggleMessage : function() {
-			this.$element.toggleClass('show');
-		},
-
-		doubleCheck : function() {
-			var self = this;
-
-			if (this.$element.hasClass('default')) {
-				self.$message.html('Are you sure?');
-				self.$element.removeClass('default').addClass('check');
+			} else {
+				self.toggleMessage();
+				self.$message.html('Delete');
+				self.$element.removeClass('check double-check').addClass('default');
 			}
-			else if (this.$element.hasClass('check')) {
-				self.$message.html('Deleted');
-				self.$element.removeClass('check').addClass('double-check finished');
-				self.$icon.removeClass('foundicon-trash').addClass('foundicon-checkmark');
-			}
+		});
+
+		this.$icon.on('click', function() {
+			self.doubleCheck();
+		});
+	},
+
+	proto.toggleMessage = function() {
+		this.$element.toggleClass('show');
+	},
+
+	proto.doubleCheck = function() {
+		var self = this;
+
+		if (this.$element.hasClass('default')) {
+			self.$message.html('Are you sure?');
+			self.$element.removeClass('default').addClass('check');
+		}
+		else if (this.$element.hasClass('check')) {
+			self.$message.html('Deleted');
+			self.$element.removeClass('check').addClass('double-check finished');
+			self.$icon.removeClass('foundicon-trash').addClass('foundicon-checkmark');
 		}
 	}
 
